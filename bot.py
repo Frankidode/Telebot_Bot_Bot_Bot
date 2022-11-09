@@ -1,9 +1,8 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from settings import TOKEN
+from settings import TOKEN, image
 from phrases import *
 import random as rn
-from PIL import Image
-img = Image.open(r'images_mem.jpeg')
+
 
 
 def sms(bot,update):
@@ -13,7 +12,8 @@ def sms(bot,update):
     print(bot.message)
 
 def memas(bot, update):
-    bot.message.reply_photo('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZuDbLEFATlFvmdhcTO2RDtSzWg-B1v59LB5coUSCBW58BXaTYsximkAAMQ2AUaB1RvI&usqp=CAU')
+    url = rn.choice(image)
+    bot.message.reply_photo(url)
 
 def otvetka(bot, update):
     mes = bot.message.text.lower()
